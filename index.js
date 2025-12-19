@@ -1,6 +1,6 @@
-const express = require("express");
-const app = express();
+import express from "express";
 
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
@@ -16,5 +16,5 @@ app.get("/api/health", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`LaserClean backend running on port ${PORT}`);
+  console.log(`LaserClean AI backend running on port ${PORT}`);
 });
