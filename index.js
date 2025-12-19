@@ -28,6 +28,7 @@ app.post("/chat", async (req, res) => {
     languageInstruction = "Respond ONLY in English.";
   }
 
+
   try {
     const aiRes = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -68,4 +69,34 @@ app.post("/chat", async (req, res) => {
 
 app.listen(3000, () => {
   console.log("LaserClean AI backend running on port 3000");
+});
+app.get("/", (req, res) => {
+  res.json({
+    status: "OK",
+    service: "LaserClean AI Backend",
+    time: new Date().toISOString()
+  });
+});
+const express = require("express");
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+// root endpoint
+app.get("/", (req, res) => {
+  res.json({
+    status: "OK",
+    service: "LaserClean AI backend",
+    version: "1.0.0",
+    time: new Date().toISOString()
+  });
+});
+
+// test API endpoint
+app.get("/api/health", (req, res) => {
+  res.json({ health: "green" });
+});
+
+app.listen(PORT, () => {
+  console.log(`LaserClean AI backend running on port ${PORT}`);
 });
